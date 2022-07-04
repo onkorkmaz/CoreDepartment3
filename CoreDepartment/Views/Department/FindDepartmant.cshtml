@@ -1,0 +1,29 @@
+﻿@model CoreDepartment.Models.Department
+@{
+    ViewData["Title"] = "FindDepartmant";
+    Layout = "~/Views/Shared/_TestLayout.cshtml";
+    ViewBag.Title = "Departman Güncelle";
+}
+
+
+
+@using (Html.BeginForm("UpdateDepartmant", "Department", FormMethod.Post))
+{
+    <b> Departman Id</b>
+    @Html.TextBoxFor(x => x.Id, new { @class = "form-control" })
+    <br />
+    <b> Departman Adı</b>
+    @Html.TextBoxFor(x => x.DepartmentName, new { @class = "form-control" })
+    <br />
+    <b>Açıklama</b>
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    <b>Aktif</b><span>&nbsp; &nbsp; &nbsp;</span>
+    @Html.CheckBoxFor(x => x.IsActive)
+    <br />
+    <br />
+
+    <button class="btn btn-info">Departman Güncelle</button>
+
+}
+

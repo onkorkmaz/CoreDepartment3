@@ -1,0 +1,23 @@
+﻿@model CoreDepartment.Models.Department;
+@{
+    ViewData["Title"] = "AddDepartmant";
+    Layout = "~/Views/Shared/_TestLayout.cshtml";
+    ViewBag.Title = "Departman Ekle";
+}
+
+
+<form class="form-group" method="post">
+
+    <b>Departman Adı</b>
+    @Html.TextBoxFor(x => x.DepartmentName, new { @class = "form-control" })
+    <br />
+    <b>Açıklama</b>
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    <b>Aktif</b>
+    @Html.CheckBoxFor(x => x.IsActive, new { @class = "form-control" })
+
+    <button class="btn btn-info">Departman Ekle</button>
+
+</form>
+

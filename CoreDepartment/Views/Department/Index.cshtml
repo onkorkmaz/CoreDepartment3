@@ -1,0 +1,58 @@
+﻿@using CoreDepartment.Models
+@model List<Department>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_TestLayout.cshtml";
+    ViewBag.Title = "Departman Listesi";
+}
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Departman</th>
+        <th>Açıklama</th>
+        <th>Aktif</th>
+        <th>Eklenme Tarihi</th>
+        <th>Güncellenme Tarihi</th>
+
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var dep in Model)
+    {
+<tr>
+    <td>@dep.Id</td>
+    <td>@dep.DepartmentName</td>
+    <td>@dep.Description</td>
+    <td>
+        @if (dep.IsActive)
+        {
+            <img src="~/images/active.png" width="20" height="20" />
+        }
+        else
+        {
+            <img src="~/images/passive.png" width="20" height="20" />
+
+        }
+
+    </td>
+    <td>@dep.AddedOn</td>
+    <td>
+        @if (dep.UpdatedOn > DateTime.MinValue)
+            @dep.UpdatedOn
+    </td>
+    <td>
+        <a href="/Department/DeleteDepartmant/@dep.Id" class="btn btn-danger">Sil</a>
+    </td>
+    <td>
+        <a href="/Department/FindDepartmant/@dep.Id" class="btn btn-success">Güncelle</a>
+    </td>
+    <td><a href="#" class="btn btn-dark">Detaylar</a></td>
+</tr>
+    }
+</table>
+<br />
+<a href="/Department/AddDepartmant" class="btn btn-primary">Yeni Departman</a>
+
